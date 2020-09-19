@@ -1,0 +1,96 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/18/2020  10:02:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\test.obj TO .\Objects\LAB1 PRINT (.\Listings\LAB1.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\test.obj (TEST)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+
+
+LINK MAP OF MODULE:  .\Objects\LAB1 (TEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001AH     UNIT         _DATA_GROUP_
+            IDATA   0022H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0108H     UNIT         ?C?LIB_CODE
+            CODE    0908H     0093H     UNIT         ?PR?MAIN?TEST
+            CODE    099BH     0014H     UNIT         ?CO?TEST
+            CODE    09AFH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\LAB1 (TEST)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TEST
+
+?PR?MAIN?TEST                  0008H    001AH
+  +--> ?CO?TEST
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\LAB1 (TEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0908H         PUBLIC        main
+  C:099BH         SYMBOL        _?ix1000
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/18/2020  10:02:32  PAGE 2
+
+
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        a
+  D:001CH         SYMBOL        i
+  D:001EH         SYMBOL        s
+  D:0020H         SYMBOL        p
+  -------         ENDDO         
+  C:0908H         LINE#         1
+  C:0908H         LINE#         2
+  C:092DH         LINE#         3
+  C:0939H         LINE#         4
+  C:094CH         LINE#         5
+  C:0964H         LINE#         6
+  C:0990H         LINE#         7
+  C:099AH         LINE#         8
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEST
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?IMUL
+  C:08F6H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00A7H BYTE ( 8%) *
+******************************************************************************
+
+Program Size: data=35.0 xdata=0 code=446
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

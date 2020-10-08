@@ -1,0 +1,136 @@
+C51 COMPILER V9.60.0.0   PROGRAM                                                           10/08/2020 12:19:07 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PROGRAM
+OBJECT MODULE PLACED IN .\Objects\program.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE program.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE PRINT(.\Listi
+                    -ngs\program.lst) TABS(2) OBJECT(.\Objects\program.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          int main() {
+   4   1          int y = (((P1 & 0xf0) >> 4) * 10 + (P1 & 0xf) << 8);
+   5   1          y = (y % 100 > 50) ? (y / 100 + 1) : (y / 100);
+   6   1          P2 = y;
+   7   1          y *= 10;
+   8   1          P3 = ((y & 0xf00) >> 4);
+   9   1          P3 += (((y & 0xff) * 10) & 0xf00) >> 8;
+  10   1          return 0;
+  11   1      }
+C51 COMPILER V9.60.0.0   PROGRAM                                                           10/08/2020 12:19:07 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 3
+                                           ; SOURCE LINE # 4
+0000 E590              MOV     A,P1
+0002 54F0              ANL     A,#0F0H
+0004 C4                SWAP    A
+0005 540F              ANL     A,#0FH
+0007 75F00A            MOV     B,#0AH
+000A A4                MUL     AB
+000B FF                MOV     R7,A
+000C E590              MOV     A,P1
+000E 540F              ANL     A,#0FH
+0010 7C00              MOV     R4,#00H
+0012 2F                ADD     A,R7
+0013 FF                MOV     R7,A
+0014 EF                MOV     A,R7
+;---- Variable 'y' assigned to Register 'R2/R3' ----
+0015 7B00              MOV     R3,#00H
+0017 FA                MOV     R2,A
+                                           ; SOURCE LINE # 5
+0018 7D64              MOV     R5,#064H
+001A 7F00              MOV     R7,#00H
+001C FE                MOV     R6,A
+001D 120000      E     LCALL   ?C?SIDIV
+0020 D3                SETB    C
+0021 ED                MOV     A,R5
+0022 9432              SUBB    A,#032H
+0024 EC                MOV     A,R4
+0025 6480              XRL     A,#080H
+0027 9480              SUBB    A,#080H
+0029 7C00              MOV     R4,#00H
+002B 7D64              MOV     R5,#064H
+002D 4010              JC      ?C0001
+002F 7F00              MOV     R7,#00H
+0031 AE02              MOV     R6,AR2
+0033 120000      E     LCALL   ?C?SIDIV
+0036 EF                MOV     A,R7
+0037 2401              ADD     A,#01H
+0039 FF                MOV     R7,A
+003A E4                CLR     A
+003B 3E                ADDC    A,R6
+003C FE                MOV     R6,A
+003D 8007              SJMP    ?C0002
+003F         ?C0001:
+003F AF03              MOV     R7,AR3
+0041 AE02              MOV     R6,AR2
+0043 120000      E     LCALL   ?C?SIDIV
+0046         ?C0002:
+0046 AA06              MOV     R2,AR6
+0048 AB07              MOV     R3,AR7
+                                           ; SOURCE LINE # 6
+004A 8BA0              MOV     P2,R3
+                                           ; SOURCE LINE # 7
+004C 7C00              MOV     R4,#00H
+004E 7D0A              MOV     R5,#0AH
+0050 AF03              MOV     R7,AR3
+0052 AE02              MOV     R6,AR2
+0054 120000      E     LCALL   ?C?IMUL
+0057 AA06              MOV     R2,AR6
+C51 COMPILER V9.60.0.0   PROGRAM                                                           10/08/2020 12:19:07 PAGE 3   
+
+0059 AB07              MOV     R3,AR7
+                                           ; SOURCE LINE # 8
+005B EA                MOV     A,R2
+005C 540F              ANL     A,#0FH
+005E FE                MOV     R6,A
+005F E4                CLR     A
+0060 7804              MOV     R0,#04H
+0062         ?C0004:
+0062 CE                XCH     A,R6
+0063 A2E7              MOV     C,ACC.7
+0065 13                RRC     A
+0066 CE                XCH     A,R6
+0067 13                RRC     A
+0068 D8F8              DJNZ    R0,?C0004
+006A F5B0              MOV     P3,A
+                                           ; SOURCE LINE # 9
+006C 7E00              MOV     R6,#00H
+006E AF03              MOV     R7,AR3
+0070 7C00              MOV     R4,#00H
+0072 7D0A              MOV     R5,#0AH
+0074 120000      E     LCALL   ?C?IMUL
+0077 EE                MOV     A,R6
+0078 540F              ANL     A,#0FH
+007A FF                MOV     R7,A
+007B EF                MOV     A,R7
+007C 25B0              ADD     A,P3
+007E F5B0              MOV     P3,A
+                                           ; SOURCE LINE # 10
+0080 E4                CLR     A
+0081 FE                MOV     R6,A
+0082 FF                MOV     R7,A
+                                           ; SOURCE LINE # 11
+0083 22                RET     
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    132    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

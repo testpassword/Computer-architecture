@@ -1,0 +1,96 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/08/2020  12:19:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\program.obj TO .\Objects\LAB2 PRINT (.\Listings\LAB2.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\program.obj (PROGRAM)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\LAB2 (PROGRAM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     009DH     UNIT         ?C?LIB_CODE
+            CODE    089DH     0084H     UNIT         ?PR?MAIN?PROGRAM
+            CODE    0921H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\LAB2 (PROGRAM)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PROGRAM
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\LAB2 (PROGRAM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PROGRAM
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:089DH         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/08/2020  12:19:10  PAGE 2
+
+
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:089DH         LINE#         3
+  C:089DH         LINE#         4
+  C:08B5H         LINE#         5
+  C:08E7H         LINE#         6
+  C:08E9H         LINE#         7
+  C:08F8H         LINE#         8
+  C:0909H         LINE#         9
+  C:091DH         LINE#         10
+  C:0920H         LINE#         11
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PROGRAM
+
+  -------         MODULE        ?C?IMUL
+  C:0800H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SIDIV
+  C:0812H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:0848H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0084H BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=304
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

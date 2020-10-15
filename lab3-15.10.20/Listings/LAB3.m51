@@ -1,0 +1,112 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/15/2020  22:34:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\program.obj TO .\Objects\LAB3 PRINT (.\Listings\LAB3.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\program.obj (PROGRAM)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\LAB3 (PROGRAM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0036H     UNIT         _DATA_GROUP_
+            IDATA   003EH     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0015H     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0181H     UNIT         ?C?LIB_CODE
+            CODE    0981H     00B3H     UNIT         ?PR?MAIN?PROGRAM
+            CODE    0A34H     0020H     UNIT         ?CO?PROGRAM
+            CODE    0A54H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\LAB3 (PROGRAM)
+
+
+SEGMENT                          DATA_GROUP          XDATA_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?PROGRAM
+
+?PR?MAIN?PROGRAM               0008H    0036H      0000H    0015H
+  +--> ?CO?PROGRAM
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\LAB3 (PROGRAM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/15/2020  22:34:32  PAGE 2
+
+
+  -------         MODULE        PROGRAM
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0981H         PUBLIC        main
+  C:0A34H         SYMBOL        _?ix1000
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        key
+  D:0012H         SYMBOL        keyLength
+  C:0A3EH         SYMBOL        str
+  X:0000H         SYMBOL        res
+  D:0014H         SYMBOL        codes
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:0981H         LINE#         3
+  C:0981H         LINE#         4
+  C:0994H         LINE#         5
+  C:099AH         LINE#         10
+  C:099DH         LINE#         11
+  C:09BEH         LINE#         12
+  C:09C9H         LINE#         14
+  C:09CCH         LINE#         15
+  C:09F1H         LINE#         16
+  C:09FCH         LINE#         18
+  C:09FFH         LINE#         19
+  C:0A25H         LINE#         20
+  C:0A30H         LINE#         21
+  C:0A33H         LINE#         22
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PROGRAM
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?SIDIV
+  C:08F6H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:092CH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00D3H BYTE (10%) *
+******************************************************************************
+
+Program Size: data=63.0 xdata=21 code=611
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

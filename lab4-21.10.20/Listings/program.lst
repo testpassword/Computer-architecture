@@ -1,0 +1,208 @@
+C51 COMPILER V9.60.0.0   PROGRAM                                                           10/22/2020 22:38:41 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PROGRAM
+OBJECT MODULE PLACED IN .\Objects\program.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE program.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE PRINT(.\Listi
+                    -ngs\program.lst) TABS(2) OBJECT(.\Objects\program.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <math.h>
+   3          
+   4          /*
+   5          double floatingPoint(double x) { return log(x); }
+   6          
+   7          void floatPointWrapper() {
+   8            float x;
+   9            for (x = -1; x <= 1; x += 0.02) 
+  10              P3 = floatingPoint(x) * 100 + 100;
+  11          }
+  12          
+  13          unsigned char fixedPoint(unsigned char x, int accuracy) {
+  14            int i;
+  15            int res;
+  16            for (i = 1; i < accuracy; i++) 
+  17              res -= pow(x, accuracy);
+  18            return res;
+  19          }
+  20          
+  21          void fixPointWrapper() {
+  22            unsigned char x;
+  23            for (x = -100; x <= 100; x++)
+  24              P3 = fixedPoint(x, 6) + 100;
+  25          }
+  26          
+  27          void main() {
+  28            while(1) {
+  29              //floatPointWrapper();
+  30              fixPointWrapper();
+  31            }
+  32          }*/
+  33          
+  34          float x;
+  35          unsigned char xdata y[100],i;
+  36          main(){  
+  37   1          i=0;
+  38   1        for(x=0; x<6.28 ;x+=0.0628)
+  39   1          y[i++]=P3=sin(x)*100+100;
+  40   1        while(1) { 
+  41   2          i=0;
+  42   2          for(x=0; x<6.28 ;x+=0.0628)
+  43   2            {
+  44   3            sin(x); P3=y[i++];
+  45   3            }
+  46   2          } 
+  47   1      }
+C51 COMPILER V9.60.0.0   PROGRAM                                                           10/22/2020 22:38:41 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 37
+0000 E4                CLR     A
+0001 900000      R     MOV     DPTR,#i
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 38
+0005 F500        R     MOV     x+03H,A
+0007 F500        R     MOV     x+02H,A
+0009 F500        R     MOV     x+01H,A
+000B F500        R     MOV     x,A
+000D         ?C0001:
+000D 7FC3              MOV     R7,#0C3H
+000F 7EF5              MOV     R6,#0F5H
+0011 7DC8              MOV     R5,#0C8H
+0013 7C40              MOV     R4,#040H
+0015 AB00        R     MOV     R3,x+03H
+0017 AA00        R     MOV     R2,x+02H
+0019 A900        R     MOV     R1,x+01H
+001B A800        R     MOV     R0,x
+001D 120000      E     LCALL   ?C?FPCMP3
+0020 5054              JNC     ?C0004
+                                           ; SOURCE LINE # 39
+0022 AF00        R     MOV     R7,x+03H
+0024 AE00        R     MOV     R6,x+02H
+0026 AD00        R     MOV     R5,x+01H
+0028 AC00        R     MOV     R4,x
+002A 120000      E     LCALL   _sin
+002D E4                CLR     A
+002E FB                MOV     R3,A
+002F FA                MOV     R2,A
+0030 79C8              MOV     R1,#0C8H
+0032 7842              MOV     R0,#042H
+0034 120000      E     LCALL   ?C?FPMUL
+0037 E4                CLR     A
+0038 FB                MOV     R3,A
+0039 FA                MOV     R2,A
+003A 79C8              MOV     R1,#0C8H
+003C 7842              MOV     R0,#042H
+003E 120000      E     LCALL   ?C?FPADD
+0041 120000      E     LCALL   ?C?CASTF
+0044 8FB0              MOV     P3,R7
+0046 900000      R     MOV     DPTR,#i
+0049 E0                MOVX    A,@DPTR
+004A FE                MOV     R6,A
+004B 04                INC     A
+004C F0                MOVX    @DPTR,A
+004D 7400        R     MOV     A,#LOW y
+004F 2E                ADD     A,R6
+0050 F582              MOV     DPL,A
+0052 E4                CLR     A
+0053 3400        R     ADDC    A,#HIGH y
+0055 F583              MOV     DPH,A
+0057 EF                MOV     A,R7
+0058 F0                MOVX    @DPTR,A
+0059 AF00        R     MOV     R7,x+03H
+005B AE00        R     MOV     R6,x+02H
+005D AD00        R     MOV     R5,x+01H
+005F AC00        R     MOV     R4,x
+C51 COMPILER V9.60.0.0   PROGRAM                                                           10/22/2020 22:38:41 PAGE 3   
+
+0061 7B49              MOV     R3,#049H
+0063 7A9D              MOV     R2,#09DH
+0065 7980              MOV     R1,#080H
+0067 783D              MOV     R0,#03DH
+0069 120000      E     LCALL   ?C?FPADD
+006C 8F00        R     MOV     x+03H,R7
+006E 8E00        R     MOV     x+02H,R6
+0070 8D00        R     MOV     x+01H,R5
+0072 8C00        R     MOV     x,R4
+0074 8097              SJMP    ?C0001
+0076         ?C0004:
+                                           ; SOURCE LINE # 40
+                                           ; SOURCE LINE # 41
+0076 E4                CLR     A
+0077 900000      R     MOV     DPTR,#i
+007A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 42
+007B F500        R     MOV     x+03H,A
+007D F500        R     MOV     x+02H,A
+007F F500        R     MOV     x+01H,A
+0081 F500        R     MOV     x,A
+0083         ?C0006:
+0083 7FC3              MOV     R7,#0C3H
+0085 7EF5              MOV     R6,#0F5H
+0087 7DC8              MOV     R5,#0C8H
+0089 7C40              MOV     R4,#040H
+008B AB00        R     MOV     R3,x+03H
+008D AA00        R     MOV     R2,x+02H
+008F A900        R     MOV     R1,x+01H
+0091 A800        R     MOV     R0,x
+0093 120000      E     LCALL   ?C?FPCMP3
+0096 50DE              JNC     ?C0004
+                                           ; SOURCE LINE # 43
+                                           ; SOURCE LINE # 44
+0098 AF00        R     MOV     R7,x+03H
+009A AE00        R     MOV     R6,x+02H
+009C AD00        R     MOV     R5,x+01H
+009E AC00        R     MOV     R4,x
+00A0 120000      E     LCALL   _sin
+00A3 900000      R     MOV     DPTR,#i
+00A6 E0                MOVX    A,@DPTR
+00A7 FF                MOV     R7,A
+00A8 04                INC     A
+00A9 F0                MOVX    @DPTR,A
+00AA 7400        R     MOV     A,#LOW y
+00AC 2F                ADD     A,R7
+00AD F582              MOV     DPL,A
+00AF E4                CLR     A
+00B0 3400        R     ADDC    A,#HIGH y
+00B2 F583              MOV     DPH,A
+00B4 E0                MOVX    A,@DPTR
+00B5 F5B0              MOV     P3,A
+                                           ; SOURCE LINE # 45
+00B7 AF00        R     MOV     R7,x+03H
+00B9 AE00        R     MOV     R6,x+02H
+00BB AD00        R     MOV     R5,x+01H
+00BD AC00        R     MOV     R4,x
+00BF 7B49              MOV     R3,#049H
+00C1 7A9D              MOV     R2,#09DH
+00C3 7980              MOV     R1,#080H
+00C5 783D              MOV     R0,#03DH
+00C7 120000      E     LCALL   ?C?FPADD
+C51 COMPILER V9.60.0.0   PROGRAM                                                           10/22/2020 22:38:41 PAGE 4   
+
+00CA 8F00        R     MOV     x+03H,R7
+00CC 8E00        R     MOV     x+02H,R6
+00CE 8D00        R     MOV     x+01H,R5
+00D0 8C00        R     MOV     x,R4
+00D2 80AF              SJMP    ?C0006
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    212    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    101    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,7 +1,6 @@
 #include <reg51.h>
 #include <math.h>
 
-/*
 double floatingPoint(double x) { return log(x); }
 
 void floatPointWrapper() {
@@ -29,20 +28,4 @@ void main() {
 		//floatPointWrapper();
 		fixPointWrapper();
 	}
-}*/
-
-
-float x;
-unsigned char xdata y[100],i;
-main(){  
-  	i=0;
-	for(x=0; x<6.28 ;x+=0.0628)
-		y[i++]=P3=sin(x)*100+100;
-	while(1) { 
-		i=0;
-	  for(x=0; x<6.28 ;x+=0.0628)
-			{
-			sin(x); P3=y[i++];
-			}
-	  } 
 }

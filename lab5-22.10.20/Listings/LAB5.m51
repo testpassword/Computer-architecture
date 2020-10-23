@@ -1,0 +1,80 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/23/2020  12:32:01  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\program.obj TO .\Objects\LAB5 PRINT (.\Listings\LAB5.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\program.obj (PROGRAM)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\LAB5 (PROGRAM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            DATA    0020H     0001H     BIT_ADDR     ?BA?PROGRAM
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0030H     UNIT         ?PR?MAIN?PROGRAM
+            CODE    0830H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\LAB5 (PROGRAM)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PROGRAM
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\LAB5 (PROGRAM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PROGRAM
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:0800H         PUBLIC        main
+  B:0020H.0       PUBLIC        x1
+  B:0020H.2       PUBLIC        y1
+  B:0020H.1       PUBLIC        x2
+  B:0020H.3       PUBLIC        y2
+  D:0020H         PUBLIC        mem
+  B:0090H.0       PUBLIC        z
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/23/2020  12:32:01  PAGE 2
+
+
+  -------         PROC          MAIN
+  C:0800H         LINE#         11
+  C:0800H         LINE#         12
+  C:0815H         LINE#         13
+  C:081BH         LINE#         14
+  C:082BH         LINE#         15
+  C:082FH         LINE#         16
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PROGRAM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0030H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=63
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

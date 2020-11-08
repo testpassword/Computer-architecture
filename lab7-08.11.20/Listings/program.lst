@@ -1,0 +1,358 @@
+C51 COMPILER V9.60.0.0   PROGRAM                                                           11/08/2020 19:08:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PROGRAM
+OBJECT MODULE PLACED IN .\Objects\program.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE program.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND CODE PRINT(.\Listi
+                    -ngs\program.lst) TABS(2) OBJECT(.\Objects\program.obj)
+
+line level    source
+
+   1          # include <reg51.h>
+   2          
+   3          void Int00(void) interrupt 0 {
+   4   1        int i = 0;
+   5   1        float n;
+   6   1        char digit;
+   7   1        char xdata str[8];
+   8   1        char m = 1;
+   9   1        int mm;
+  10   1        char x = P3;
+  11   1        switch (x) {
+  12   2          case 0xfe: digit = '1'; break;
+  13   2          case 0x02: digit = '2'; break;
+  14   2          case 0xfd: digit = '3'; break;
+  15   2          case 0x79: digit = '4'; break;
+  16   2          case 0xfb: digit = '5'; break;
+  17   2          
+  18   2          case 0x08: digit = '6'; break;
+  19   2          case 0xf7: digit = '7'; break;
+  20   2          case 0x10: digit = '8'; break;
+  21   2          case 0xef: digit = '9'; break;
+  22   2          case 0x01: digit = '0'; break;
+  23   2          
+  24   2          case 0xfa: digit = '-'; break;
+  25   2          case 0xbe: digit = ','; break;
+  26   2          case 0xfc: digit = 'e'; break;
+  27   2          default: digit = 0xff;
+  28   2        }
+  29   1        if (digit == ',' || digit == '-') {
+  30   2          mm = m;
+  31   2          str[i++] = digit;
+  32   2        }
+  33   1        if (digit == 'e') {
+  34   2          digit = 0xff;
+  35   2          n /= mm;
+  36   2        }
+  37   1        if (digit != 0xff) {
+  38   2          str[i++] = digit;
+  39   2          m *= 10;
+  40   2          n = n * 10 + (digit & 0xff);
+  41   2        }
+  42   1        while (~INT0);
+  43   1      }
+  44          
+  45          int main() {
+  46   1        EX0 = 1;
+  47   1        IT0 = 1;
+  48   1        EA = 1;
+  49   1        while(1);
+  50   1        return 0;
+  51   1      }
+*** WARNING C294 IN LINE 50 OF program.c: unreachable code
+C51 COMPILER V9.60.0.0   PROGRAM                                                           11/08/2020 19:08:05 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION Int00 (BEGIN)
+0000 C0E0              PUSH    ACC
+0002 C0F0              PUSH    B
+0004 C083              PUSH    DPH
+0006 C082              PUSH    DPL
+0008 C0D0              PUSH    PSW
+000A 75D000            MOV     PSW,#00H
+000D C000              PUSH    AR0
+000F C001              PUSH    AR1
+0011 C002              PUSH    AR2
+0013 C003              PUSH    AR3
+0015 C004              PUSH    AR4
+0017 C005              PUSH    AR5
+0019 C006              PUSH    AR6
+001B C007              PUSH    AR7
+                                           ; SOURCE LINE # 3
+                                           ; SOURCE LINE # 4
+001D 750000      R     MOV     i,#00H
+0020 750000      R     MOV     i+01H,#00H
+                                           ; SOURCE LINE # 8
+0023 750001      R     MOV     m,#01H
+                                           ; SOURCE LINE # 10
+;---- Variable 'x' assigned to Register 'R7' ----
+0026 AFB0              MOV     R7,P3
+                                           ; SOURCE LINE # 11
+0028 EF                MOV     A,R7
+0029 120000      E     LCALL   ?C?CCASE
+002C 0000        R     DW      ?C0011
+002E 01                DB      01H
+002F 0000        R     DW      ?C0003
+0031 02                DB      02H
+0032 0000        R     DW      ?C0007
+0034 08                DB      08H
+0035 0000        R     DW      ?C0009
+0037 10                DB      010H
+0038 0000        R     DW      ?C0005
+003A 79                DB      079H
+003B 0000        R     DW      ?C0013
+003D BE                DB      0BEH
+003E 0000        R     DW      ?C0010
+0040 EF                DB      0EFH
+0041 0000        R     DW      ?C0008
+0043 F7                DB      0F7H
+0044 0000        R     DW      ?C0012
+0046 FA                DB      0FAH
+0047 0000        R     DW      ?C0006
+0049 FB                DB      0FBH
+004A 0000        R     DW      ?C0014
+004C FC                DB      0FCH
+004D 0000        R     DW      ?C0004
+004F FD                DB      0FDH
+0050 0000        R     DW      ?C0002
+0052 FE                DB      0FEH
+0053 0000              DW      00H
+0055 0000        R     DW      ?C0015
+                                           ; SOURCE LINE # 12
+0057         ?C0002:
+0057 750031      R     MOV     digit,#031H
+005A 803F              SJMP    ?C0001
+C51 COMPILER V9.60.0.0   PROGRAM                                                           11/08/2020 19:08:05 PAGE 3   
+
+                                           ; SOURCE LINE # 13
+005C         ?C0003:
+005C 750032      R     MOV     digit,#032H
+005F 803A              SJMP    ?C0001
+                                           ; SOURCE LINE # 14
+0061         ?C0004:
+0061 750033      R     MOV     digit,#033H
+0064 8035              SJMP    ?C0001
+                                           ; SOURCE LINE # 15
+0066         ?C0005:
+0066 750034      R     MOV     digit,#034H
+0069 8030              SJMP    ?C0001
+                                           ; SOURCE LINE # 16
+006B         ?C0006:
+006B 750035      R     MOV     digit,#035H
+006E 802B              SJMP    ?C0001
+                                           ; SOURCE LINE # 18
+0070         ?C0007:
+0070 750036      R     MOV     digit,#036H
+0073 8026              SJMP    ?C0001
+                                           ; SOURCE LINE # 19
+0075         ?C0008:
+0075 750037      R     MOV     digit,#037H
+0078 8021              SJMP    ?C0001
+                                           ; SOURCE LINE # 20
+007A         ?C0009:
+007A 750038      R     MOV     digit,#038H
+007D 801C              SJMP    ?C0001
+                                           ; SOURCE LINE # 21
+007F         ?C0010:
+007F 750039      R     MOV     digit,#039H
+0082 8017              SJMP    ?C0001
+                                           ; SOURCE LINE # 22
+0084         ?C0011:
+0084 750030      R     MOV     digit,#030H
+0087 8012              SJMP    ?C0001
+                                           ; SOURCE LINE # 24
+0089         ?C0012:
+0089 75002D      R     MOV     digit,#02DH
+008C 800D              SJMP    ?C0001
+                                           ; SOURCE LINE # 25
+008E         ?C0013:
+008E 75002C      R     MOV     digit,#02CH
+0091 8008              SJMP    ?C0001
+                                           ; SOURCE LINE # 26
+0093         ?C0014:
+0093 750065      R     MOV     digit,#065H
+0096 8003              SJMP    ?C0001
+                                           ; SOURCE LINE # 27
+0098         ?C0015:
+0098 7500FF      R     MOV     digit,#0FFH
+                                           ; SOURCE LINE # 28
+009B         ?C0001:
+                                           ; SOURCE LINE # 29
+009B E500        R     MOV     A,digit
+009D 642C              XRL     A,#02CH
+009F 6005              JZ      ?C0017
+00A1 E500        R     MOV     A,digit
+00A3 B42D21            CJNE    A,#02DH,?C0016
+00A6         ?C0017:
+                                           ; SOURCE LINE # 30
+00A6 AF00        R     MOV     R7,m
+C51 COMPILER V9.60.0.0   PROGRAM                                                           11/08/2020 19:08:05 PAGE 4   
+
+00A8 EF                MOV     A,R7
+00A9 33                RLC     A
+00AA 95E0              SUBB    A,ACC
+00AC F500        R     MOV     mm,A
+00AE 8F00        R     MOV     mm+01H,R7
+                                           ; SOURCE LINE # 31
+00B0 0500        R     INC     i+01H
+00B2 E500        R     MOV     A,i+01H
+00B4 AE00        R     MOV     R6,i
+00B6 7002              JNZ     ?C0026
+00B8 0500        R     INC     i
+00BA         ?C0026:
+00BA 14                DEC     A
+00BB 2400        R     ADD     A,#LOW str
+00BD F582              MOV     DPL,A
+00BF 7400        R     MOV     A,#HIGH str
+00C1 3E                ADDC    A,R6
+00C2 F583              MOV     DPH,A
+00C4 E500        R     MOV     A,digit
+00C6 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 32
+00C7         ?C0016:
+                                           ; SOURCE LINE # 33
+00C7 E500        R     MOV     A,digit
+00C9 B46536            CJNE    A,#065H,?C0018
+                                           ; SOURCE LINE # 34
+00CC 7500FF      R     MOV     digit,#0FFH
+                                           ; SOURCE LINE # 35
+00CF AF00        R     MOV     R7,n+03H
+00D1 AE00        R     MOV     R6,n+02H
+00D3 AD00        R     MOV     R5,n+01H
+00D5 AC00        R     MOV     R4,n
+00D7 C004              PUSH    AR4
+00D9 C005              PUSH    AR5
+00DB C006              PUSH    AR6
+00DD C007              PUSH    AR7
+00DF AC00        R     MOV     R4,mm
+00E1 AD00        R     MOV     R5,mm+01H
+00E3 EC                MOV     A,R4
+00E4 120000      E     LCALL   ?C?FCASTI
+00E7 A804              MOV     R0,AR4
+00E9 A905              MOV     R1,AR5
+00EB AA06              MOV     R2,AR6
+00ED AB07              MOV     R3,AR7
+00EF D007              POP     AR7
+00F1 D006              POP     AR6
+00F3 D005              POP     AR5
+00F5 D004              POP     AR4
+00F7 120000      E     LCALL   ?C?FPDIV
+00FA 8F00        R     MOV     n+03H,R7
+00FC 8E00        R     MOV     n+02H,R6
+00FE 8D00        R     MOV     n+01H,R5
+0100 8C00        R     MOV     n,R4
+                                           ; SOURCE LINE # 36
+0102         ?C0018:
+                                           ; SOURCE LINE # 37
+0102 AF00        R     MOV     R7,digit
+0104 EF                MOV     A,R7
+0105 33                RLC     A
+0106 95E0              SUBB    A,ACC
+0108 FE                MOV     R6,A
+0109 EF                MOV     A,R7
+C51 COMPILER V9.60.0.0   PROGRAM                                                           11/08/2020 19:08:05 PAGE 5   
+
+010A F4                CPL     A
+010B 4E                ORL     A,R6
+010C 6052              JZ      ?C0020
+                                           ; SOURCE LINE # 38
+010E 0500        R     INC     i+01H
+0110 E500        R     MOV     A,i+01H
+0112 AE00        R     MOV     R6,i
+0114 7002              JNZ     ?C0027
+0116 0500        R     INC     i
+0118         ?C0027:
+0118 14                DEC     A
+0119 2400        R     ADD     A,#LOW str
+011B F582              MOV     DPL,A
+011D 7400        R     MOV     A,#HIGH str
+011F 3E                ADDC    A,R6
+0120 F583              MOV     DPH,A
+0122 E500        R     MOV     A,digit
+0124 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 39
+0125 E500        R     MOV     A,m
+0127 75F00A            MOV     B,#0AH
+012A A4                MUL     AB
+012B F500        R     MOV     m,A
+                                           ; SOURCE LINE # 40
+012D E4                CLR     A
+012E FF                MOV     R7,A
+012F FE                MOV     R6,A
+0130 7D20              MOV     R5,#020H
+0132 7C41              MOV     R4,#041H
+0134 AB00        R     MOV     R3,n+03H
+0136 AA00        R     MOV     R2,n+02H
+0138 A900        R     MOV     R1,n+01H
+013A A800        R     MOV     R0,n
+013C 120000      E     LCALL   ?C?FPMUL
+013F C004              PUSH    AR4
+0141 C005              PUSH    AR5
+0143 C006              PUSH    AR6
+0145 C007              PUSH    AR7
+0147 AC00        R     MOV     R4,digit
+0149 E4                CLR     A
+014A 120000      E     LCALL   ?C?FCASTC
+014D D003              POP     AR3
+014F D002              POP     AR2
+0151 D001              POP     AR1
+0153 D000              POP     AR0
+0155 120000      E     LCALL   ?C?FPADD
+0158 8F00        R     MOV     n+03H,R7
+015A 8E00        R     MOV     n+02H,R6
+015C 8D00        R     MOV     n+01H,R5
+015E 8C00        R     MOV     n,R4
+                                           ; SOURCE LINE # 41
+0160         ?C0020:
+                                           ; SOURCE LINE # 42
+0160 A2B2              MOV     C,INT0
+0162 B3                CPL     C
+0163 40FB              JC      ?C0020
+                                           ; SOURCE LINE # 43
+0165 D007              POP     AR7
+0167 D006              POP     AR6
+0169 D005              POP     AR5
+016B D004              POP     AR4
+016D D003              POP     AR3
+C51 COMPILER V9.60.0.0   PROGRAM                                                           11/08/2020 19:08:05 PAGE 6   
+
+016F D002              POP     AR2
+0171 D001              POP     AR1
+0173 D000              POP     AR0
+0175 D0D0              POP     PSW
+0177 D082              POP     DPL
+0179 D083              POP     DPH
+017B D0F0              POP     B
+017D D0E0              POP     ACC
+017F 32                RETI    
+             ; FUNCTION Int00 (END)
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 45
+                                           ; SOURCE LINE # 46
+0000 D2A8              SETB    EX0
+                                           ; SOURCE LINE # 47
+0002 D288              SETB    IT0
+                                           ; SOURCE LINE # 48
+0004 D2AF              SETB    EA
+0006         ?C0023:
+                                           ; SOURCE LINE # 49
+0006 80FE              SJMP    ?C0023
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    392    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       8
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -13,7 +13,7 @@ unsigned char fixedPoint(unsigned char x, int accuracy) {
 	int i;
 	int res;
 	for (i = 1; i < accuracy; i++) 
-		res -= pow(x, accuracy);
+		res -= pow(x, i) / i;
 	return res;
 }
 

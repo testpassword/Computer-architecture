@@ -1,0 +1,170 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/08/2020  19:08:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\program.obj TO .\Objects\LAB7 PRINT (.\Listings\LAB7.m51)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\program.obj (PROGRAM)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CCASE)
+
+
+LINK MAP OF MODULE:  .\Objects\LAB7 (PROGRAM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0008H     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     07FAH                  *** GAP ***
+            CODE    0800H     035AH     UNIT         ?C?LIB_CODE
+            CODE    0B5AH     0180H     UNIT         ?PR?INT00?PROGRAM
+            CODE    0CDAH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0CE6H     0008H     UNIT         ?PR?MAIN?PROGRAM
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\LAB7 (PROGRAM)
+
+
+SEGMENT                          DATA_GROUP          XDATA_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?PR?INT00?PROGRAM              0008H    000AH      0000H    0008H
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?PROGRAM
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/08/2020  19:08:02  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\LAB7 (PROGRAM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PROGRAM
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:0B5AH         PUBLIC        Int00
+  B:00B0H.2       PUBLIC        INT0
+  C:0CE6H         PUBLIC        main
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  -------         PROC          INT00
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:000AH         SYMBOL        n
+  D:000EH         SYMBOL        digit
+  X:0000H         SYMBOL        str
+  D:000FH         SYMBOL        m
+  D:0010H         SYMBOL        mm
+  D:0007H         SYMBOL        x
+  -------         ENDDO         
+  C:0B5AH         LINE#         3
+  C:0B77H         LINE#         4
+  C:0B7DH         LINE#         8
+  C:0B80H         LINE#         10
+  C:0B82H         LINE#         11
+  C:0BB1H         LINE#         12
+  C:0BB6H         LINE#         13
+  C:0BBBH         LINE#         14
+  C:0BC0H         LINE#         15
+  C:0BC5H         LINE#         16
+  C:0BCAH         LINE#         18
+  C:0BCFH         LINE#         19
+  C:0BD4H         LINE#         20
+  C:0BD9H         LINE#         21
+  C:0BDEH         LINE#         22
+  C:0BE3H         LINE#         24
+  C:0BE8H         LINE#         25
+  C:0BEDH         LINE#         26
+  C:0BF2H         LINE#         27
+  C:0BF5H         LINE#         28
+  C:0BF5H         LINE#         29
+  C:0C00H         LINE#         30
+  C:0C0AH         LINE#         31
+  C:0C21H         LINE#         32
+  C:0C21H         LINE#         33
+  C:0C26H         LINE#         34
+  C:0C29H         LINE#         35
+  C:0C5CH         LINE#         36
+  C:0C5CH         LINE#         37
+  C:0C68H         LINE#         38
+  C:0C7FH         LINE#         39
+  C:0C87H         LINE#         40
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/08/2020  19:08:02  PAGE 3
+
+
+  C:0CBAH         LINE#         41
+  C:0CBAH         LINE#         42
+  C:0CBFH         LINE#         43
+  -------         ENDPROC       INT00
+  -------         PROC          MAIN
+  C:0CE6H         LINE#         45
+  C:0CE6H         LINE#         46
+  C:0CE8H         LINE#         47
+  C:0CEAH         LINE#         48
+  C:0CECH         LINE#         49
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PROGRAM
+
+  -------         MODULE        ?C?FPADD
+  C:0807H         PUBLIC        ?C?FPADD
+  C:0803H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPMUL
+  C:08F8H         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0A01H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:0AA8H         PUBLIC        ?C?FCASTC
+  C:0AA3H         PUBLIC        ?C?FCASTI
+  C:0A9EH         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?LNEG
+  C:0B26H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?CCASE
+  C:0B34H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 018BH BYTE (19%) *
+******************************************************************************
+
+Program Size: data=19.0 xdata=8 code=1268
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
